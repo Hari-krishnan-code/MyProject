@@ -16,7 +16,17 @@ class DbConnect:
             return None
 
 class GymMemberManager(DbConnect):
-    pass
+    def get_object(self, id=None):
+        try:
+            self.connect = super().get_connection()
+            self.cursor = self.connect.cursor()
+            query = "select * from member where id = %s"
+            values = (id,)
+            self.cursor.execute(query, values)
+            record = self.cursor.fetchone()
+            return record
+        except Exception as e:
+            return None
 
 connection_instance = DbConnect()
 connection_instance.get_connection()
