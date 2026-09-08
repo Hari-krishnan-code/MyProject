@@ -1,3 +1,5 @@
+from asyncio import log
+
 import mysql.connector
 
 class DbConnect:
@@ -12,6 +14,9 @@ class DbConnect:
             return self.connection
         except Exception as e:
             return None
+
+class GymMemberManager(DbConnect):
+    pass
 
 connection_instance = DbConnect()
 connection_instance.get_connection()
