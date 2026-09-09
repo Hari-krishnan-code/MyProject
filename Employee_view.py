@@ -1,5 +1,3 @@
-from asyncio import log
-
 import mysql.connector
 
 class DbConnect:
